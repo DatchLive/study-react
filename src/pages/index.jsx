@@ -15,10 +15,10 @@ const Home = (props) => {
       {props.isShow ? <h1>{props.count}</h1> : null}
       <button onClick={props.handleClick}>ボタン</button>
       <button onClick={props.handleDisplay}>
-        {isShow ? "非表示" : "表示"}
+        {props.isShow ? "非表示" : "表示"}
       </button>
 
-      <input type="text" value={text} onChange={handleChange} />
+      <input type="text" value={props.text} onChange={props.handleChange} />
       <button onClick={props.handleAdd}> 追加</button>
       <ul>
         {props.array.map((item) => {
