@@ -1,25 +1,27 @@
-import Head from "next/head";
-import { usePost } from "src/hooks/usePost";
+import { useUser } from "src/hooks/useUser";
 
-export const User = () => {
-  const { post, user, error, isLoading } = usePost();
+export const UserComponent = () => {
+  const { data, error, isLoading } = useUser();
 
   if (isLoading) {
     return <div>ローディング中</div>;
   }
+
   if (error) {
     return <div>{error.message}</div>;
   }
 
-  console.log(user);
-
   return (
     <div>
-      <Head>
-        <title>{user?.name}</title>
-      </Head>
-      <h1>{user?.name}</h1>
-      <p>{user?.email}</p>
+      <h1>{data.name}</h1>
+      <ul>
+        <li>{data.email}</li>
+        <li>{data.username}</li>
+        <li>{data.address.city}</li>
+        <li>{data.phone}</li>
+        <li>{data.website}</li>
+        <li>{data.company.name}</li>
+      </ul>
     </div>
   );
 };

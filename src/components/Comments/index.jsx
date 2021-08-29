@@ -1,8 +1,8 @@
 import Link from "next/link";
-import { useUsers } from "src/hooks/useUsers";
+import { useComments } from "src/hooks/useComments";
 
-export const Users = () => {
-  const { data, error, isLoading, isEmpty } = useUsers();
+export const Comments = () => {
+  const { data, error, isLoading, isEmpty } = useComments();
 
   if (isLoading) {
     return <div>ローディング中</div>;
@@ -16,11 +16,11 @@ export const Users = () => {
 
   return (
     <ol>
-      {data.map((user) => {
+      {data.map((data) => {
         return (
-          <li key={user.id}>
-            <Link href={`/users/${user.id}`}>
-              <a>{user.name}</a>
+          <li key={data.id}>
+            <Link href={`/comments/${data.id}`}>
+              <a>{data.name}</a>
             </Link>
           </li>
         );
